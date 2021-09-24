@@ -12,4 +12,4 @@ for d in ${DEPENDENCIES[@]}; do
   done
 done
 
-/docker-entrypoint.sh
+nginx
