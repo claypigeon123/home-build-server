@@ -2,7 +2,7 @@ version: '3'
 services:
   pigeon-nginx:
     image: pigeon-nginx:latest
-    context: pigeon-nginx
+    context: ./pigeon-nginx
     restart: always
     ports:
       - "80:80"
