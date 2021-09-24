@@ -1,0 +1,6 @@
+FROM nginx
+
+RUN curl -o /certbot-nginx/ssl-dhparams.pem --create-dirs https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem
+RUN curl -o /certbot-nginx/options-ssl-nginx.conf https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf
+
+COPY config/nginx.conf /etc/nginx/nginx.conf
