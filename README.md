@@ -33,7 +33,7 @@ sudo openssl req -x509 -nodes -newkey rsa:4096 -days 1 -keyout /letsencryptdata/
 3. Make sure nginx is configured to serve a shared root directory (e.g. `/letsencryptdata/www`) through http at `<domain>/.well-known/acme-challenge/`
 4. Start nginx, making sure that the dummy certificate is accessible through a mounted volume from host
 ```
-sudo docker build -t pigeon-nginx ./pigeon-nginx
+sudo docker build -t pigeon-nginx .
 ```
 ```
 sudo docker run -d --name pigeon-nginx -p 80:80 -p 443:443 -v /letsencryptdata/etc/letsencrypt:/etc/letsencrypt -v /letsencryptdata/www:/var/www/certbot pigeon-nginx
