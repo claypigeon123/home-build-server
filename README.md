@@ -22,3 +22,7 @@ sudo docker run -d -p 2002:8081 -p 1900:1900 -p 1901:1901 -p 1902:1902 --name pi
 sudo docker build --file ./pigeon-nexus/Dockerfile --tag pigeon-jenkins-controller
 sudo docker run -d -p 2999:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home --name pigeon-jenkins-controller pigeon-jenkins-controller
 ```
+
+```
+sudo docker run -it --rm --name certbot -v "/letsencryptdata/etc/letsencrypt:/etc/letsencrypt" -v "/letsencryptdata/var/lib/letsencrypt:/var/lib/letsencrypt" -v "/letsencryptdata/www:/var/www" certbot/certbot:arm64v8-latest certonly
+```
