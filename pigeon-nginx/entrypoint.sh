@@ -12,4 +12,4 @@ for d in ${DEPENDENCIES[@]}; do
   done
 done
 
-nginx
+/usr/sbin/nginx -g "daemon off;"
