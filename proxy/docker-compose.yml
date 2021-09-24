@@ -22,3 +22,5 @@ services:
     networks:
       - build-network
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+networks:
+  build-network:
