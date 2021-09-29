@@ -36,7 +36,7 @@ sudo openssl req -x509 -nodes -newkey rsa:4096 -days 1 -keyout /letsencryptdata/
 sudo docker build -t pigeon-nginx .
 ```
 ```
-sudo docker run -d --name pigeon-nginx -p 80:80 -p 443:443 -p 1900:1900 -p 1901:1901 -v /letsencryptdata/etc/letsencrypt:/etc/letsencrypt -v /letsencryptdata/www:/var/www/certbot pigeon-nginx
+sudo docker run -d --name pigeon-nginx -p 80:80 -p 443:443 -v /letsencryptdata/etc/letsencrypt:/etc/letsencrypt -v /letsencryptdata/www:/var/www/certbot pigeon-nginx
 ```
 5. Run the certificate generator
 ```
