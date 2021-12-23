@@ -1,0 +1,35 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.07rem;
+    color: #e6e6e6;
+    background-color: #20242a;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-header {
+    color: #7e7e7e;
+    border-bottom: 1px solid #464646;
+    border-left: 1px solid #464646;
+    border-right: 1px solid #464646;
+}
+
+.tool-card {
+    border-left: 10px solid white !important;
+    transition: all 200ms;
+}
+
+.tool-card:hover {
+    background-color: #242b38;
+    border-left: 20px solid #4ac6ff !important;
+    cursor: pointer;
+}
+
+.tool-card-header-text {
+    align-self: center;
+}
