@@ -1,5 +1,11 @@
 # Pigeon Build Server
 
+Four apps in Docker containers to run a fully functional build server:
+- Nginx
+- Portainer
+- Nexus
+- Jenkins
+
 ## Images
 
 ### Portainer
@@ -11,8 +17,7 @@ sudo docker run -d -p 2000:8000 -p 2001:9000 --name pigeon-portainer --restart a
 ### Nexus
 
 ```
-sudo docker build --file ./pigeon-nexus/Dockerfile --tag pigeon-nexus .
-sudo docker run -d -p 2002:8081 -p 1900:1900 -p 1901:1901 -p 1902:1902 --name pigeon-nexus pigeon-nexus
+sudo docker run -d -p 2002:8081 -p 1900:1900 -p 1901:1901 -p 1902:1902 --name pigeon-nexus -v nexus_data:/nexus-data klo2k/nexus3
 ```
 
 ### Jenkins
