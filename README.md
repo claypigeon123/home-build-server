@@ -15,6 +15,7 @@ sudo docker run -d -p 2000:8000 -p 2001:9000 --name pigeon-portainer --restart a
 ```
 
 ### Nexus
+Replace image with `sonatype/nexus3` if amd64, keep as is if arm architecture (e.g. Raspberry Pi)
 
 ```
 sudo docker run -d -p 2002:8081 -p 1900:1900 -p 1901:1901 -p 1902:1902 --name pigeon-nexus -v nexus_data:/nexus-data klo2k/nexus3
