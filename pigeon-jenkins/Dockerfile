@@ -4,6 +4,7 @@ USER root
 
 RUN apt-get update
 RUN apt-get install -y \
+    wget \
     apt-transport-https \
     ca-certificates \
     curl \
