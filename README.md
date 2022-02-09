@@ -38,8 +38,6 @@ sudo openssl req -x509 -nodes -newkey rsa:4096 -days 1 -keyout /letsencryptdata/
 4. Start nginx, making sure that the dummy certificate is accessible through a mounted volume from host
 ```
 sudo docker build --tag pigeon-nginx ./pigeon-nginx
-```
-```
 sudo docker run -d --name pigeon-nginx -p 80:80 -p 443:443 -v /letsencryptdata/etc/letsencrypt:/etc/letsencrypt -v /letsencryptdata/www:/var/www/certbot pigeon-nginx
 ```
 5. Run the certificate generator
