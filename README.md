@@ -29,12 +29,12 @@ sudo docker run -d -p 2999:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home
 
 ### Nginx Proxy Fuckery
 
-1. Set up nginx according to your needs
-2. Generate a dummy certificate on the host in a directory (later to be mounted to the nginx container)
+1. Set up nginx according to needs - solid base provided in this repo
+2. Generate a dummy certificate on the host machine in a directory, replacing `<domain>` with your own (later to be mounted to the nginx container)
 ```
 sudo openssl req -x509 -nodes -newkey rsa:4096 -days 1 -keyout /letsencryptdata/etc/letsencrypt/live/<domain>/privkey.pem -out /letsencryptdata/etc/letsencrypt/live/<domain>/fullchain.pem -subj "/CN=localhost"
 ```
-3. Make sure nginx is configured to serve a shared root directory (e.g. `/letsencryptdata/www`) through http at `<domain>/.well-known/acme-challenge/`
+3. Make sure nginx is configured to serve a shared root directory (e.g. `/letsencryptdata/www`) through http at `<domain>/.well-known/acme-challenge/`. Already set up in this repo.
 4. Start nginx, making sure that the dummy certificate is accessible through a mounted volume from host
 ```
 sudo docker build -t pigeon-nginx .
