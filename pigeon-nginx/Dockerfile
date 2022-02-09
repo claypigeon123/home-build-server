@@ -8,7 +8,7 @@ RUN curl -o /certbot-nginx/options-ssl-nginx.conf https://raw.githubusercontent.
 COPY config/mime.types /etc/nginx/mime.types
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
-COPY public /etc/landing-page
+COPY public /usr/share/nginx/html
 
 RUN apt update && apt install nano wget -y
 
