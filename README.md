@@ -5,8 +5,7 @@
 ### Portainer
 
 ```
-sudo docker build --file ./pigeon-portainer --tag pigeon-portainer .
-sudo docker run -d -p 2000:8000 -p 2001:9000 --name pigeon-portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data pigeon-portainer
+sudo docker run -d -p 2000:8000 -p 2001:9000 --name pigeon-portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 ```
 
 ### Nexus
