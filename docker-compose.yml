@@ -1,0 +1,67 @@
+version: '3.8'
+services:
+  pigeon-portainer:
+    container_name: pigeon-portainer
+    image: portainer/portainer-ce:latest
+    restart: always
+    ports:
+      - "2000:8000"
+      - "2001:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - build-network
+
+  pigeon-nexus:
+    container_name: pigeon-nexus
+    image: klo2k/nexus3:latest
+    restart: always
+    ports:
+      - "2002:8081"
+      - "1900:1900"
+      - "1901:1901"
+      - "1902:1902"
+    volumes:
+      - nexus_data:/nexus-data
+    networks:
+      - build-network
+
+  pigeon-jenkins-controller:
+    container_name: pigeon-jenkins-controller
+    image: pigeon-jenkins-controller:latest
+    build: ./pigeon-jenkins
+    restart: always
+    ports:
+      - "2999:8080"
+      - "50000:50000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins_home:/var/jenkins_home
+    environment:
+      - JENKINS_OPTS="--prefix=/jenkins"
+    networks:
+      - build-network
+
+  pigeon-nginx:
+    container_name: pigeon-nginx
+    image: pigeon-nginx:latest
+    build: ./pigeon-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /letsencryptdata/etc/letsencrypt:/etc/letsencrypt
+      - /letsencryptdata/www:/var/www/certbot
+    networks:
+      - build-network
+
+volumes:
+  portainer_data:
+  nexus_data:
+  jenkins_home:
+
+networks:
+  build-network:
+    driver: bridge
