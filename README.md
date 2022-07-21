@@ -5,10 +5,19 @@ Four apps in Docker containers to run a fully functional build server:
 - Portainer
 - Nexus
 - Jenkins
+- Open LDAP
 
 ## Components
 
-Use the included docker-compose or bring up containers manually as described below.
+### Open LDAP
+
+```
+docker run --name pigeon-openldap-server -d -e LDAP_ORGANISATION="CP Systems" -e LDAP_DOMAIN="cp-sys.hu" -e LDAP_ADMIN_PASSWORD="?" -v openldap_db:/var/lib/ldap -v openldap_cfg:/etc/ldap/slapd.d osixia/openldap:1.5.0
+```
+
+```
+docker run --name pigeon-openldap-admin -d -p 6443:443 -e PHPLDAPADMIN_LDAP_HOSTS=pigeon-openldap-server osixia/phpldapadmin:0.9.0
+```
 
 ### Portainer
 
