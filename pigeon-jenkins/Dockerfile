@@ -30,6 +30,7 @@ RUN mv ./kubectl /usr/local/bin/kubectl
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-$(dpkg --print-architecture | awk '{if ($1 == "arm64") print "aarch64"; else if ($1 == "amd64") print "x86_64"}').zip" -o "awscliv2.zip"
 RUN unzip awscliv2.zip
 RUN ./aws/install
+RUN rm -rf awscliv2.zip
 
 USER jenkins
 
