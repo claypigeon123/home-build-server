@@ -12,7 +12,8 @@ RUN apt-get install -y \
     gnupg \
     lsb-release \
     jq \
-    build-essential
+    build-essential \
+    zlib1g-dev
 
 # Docker
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
