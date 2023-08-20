@@ -4,7 +4,11 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 1.07rem;
     color: #e6e6e6;
-    background-color: #20242a;
+    background-color: #1d1f24;
+}
+
+* {
+    transition: all 200ms ease;
 }
 
 .main-header {
@@ -15,8 +19,8 @@ body {
 }
 
 .tool-card {
-    border-left: 10px solid white !important;
-    transition: all 200ms;
+    border: 1px solid #434c58 !important;
+    border-left: 0.6rem solid #434c58 !important;
 }
 
 .tool-card > a, a:hover, a:focus, a:active {
@@ -25,8 +29,8 @@ body {
 }
 
 .tool-card:hover {
-    background-color: #242b38;
-    border-left: 20px solid #4ac6ff !important;
+    background-color: #212536;
+    border-left: 1rem solid #3e4f97 !important;
     cursor: pointer;
 }
 
