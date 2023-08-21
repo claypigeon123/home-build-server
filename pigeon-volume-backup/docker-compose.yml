@@ -14,3 +14,20 @@ services:
       - portainer_data:/backup/portainer_data:ro
       - nexus_data:/backup/nexus_data:ro
       - jenkins_home:/backup/jenkins_home:ro
+
+volumes:
+  openldap_cfg:
+    name: openldap_cfg
+    external: true
+  openldap_db:
+    name: openldap_db
+    external: true
+  portainer_data:
+    name: portainer_data
+    external: true
+  nexus_data:
+    name: nexus_data
+    external: true
+  jenkins_home:
+    name: jenkins_home
+    external: true
