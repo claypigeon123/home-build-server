@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  backup:
+    image: pigeon-volume-backup:1.0
+    build: ./image
+    environment:
+      AWS_S3_BUCKET_NAME: ${AWS_S3_BUCKET_NAME}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+    volumes:
+      - openldap_cfg:/backup/openldap_cfg:ro
+      - openldap_db:/backup/openldap_db:ro
+      - portainer_data:/backup/portainer_data:ro
+      - nexus_data:/backup/nexus_data:ro
+      - jenkins_home:/backup/jenkins_home:ro
