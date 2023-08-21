@@ -2,7 +2,7 @@ import archiver from "archiver";
 import { WriteStream } from "fs";
 import fs, { FileHandle } from 'fs/promises';
 import { basename } from "path";
-import { ArchivalService, CleanupArchiveOptions, CreateZipOptions, ReadArchiveOptions } from "./ArchivalService";
+import { ArchivalService, CleanupArchiveOptions, CreateZipOptions } from "./ArchivalService";
 
 
 export class ArchiverArchivalService implements ArchivalService {
@@ -31,15 +31,6 @@ export class ArchiverArchivalService implements ArchivalService {
         } finally {
             output.close();
             await fileHandle.close();
-        }
-    }
-
-    async readArchive({ filePath }: ReadArchiveOptions) {
-        try {
-            return await fs.readFile(filePath);
-        } catch (err) {
-            console.log('Error while reading created archive: ', err);
-            throw err;
         }
     }
 

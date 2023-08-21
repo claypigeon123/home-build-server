@@ -2,7 +2,7 @@
 
 export type UploadOptions = {
     fileName: string
-    zipData: Buffer
+    filePath: string
 }
 
 export interface ArchiveStorageService {

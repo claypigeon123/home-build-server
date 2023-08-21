@@ -1,5 +1,6 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { UploadOptions, ArchiveStorageService } from "./ArchiveStorageService";
+import { createReadStream } from "fs";
+import { ArchiveStorageService, UploadOptions } from "./ArchiveStorageService";
 
 
 export class AwsS3ArchiveStorageService implements ArchiveStorageService {
@@ -12,21 +13,25 @@ export class AwsS3ArchiveStorageService implements ArchiveStorageService {
         this.bucket = bucket;
     }
 
-    async upload({ fileName, zipData }: UploadOptions) {
+    async upload({ fileName, filePath }: UploadOptions) {
+        console.log(`Uploading [${filePath}] archive`);
+
+        const stream = createReadStream(filePath);
+
         const putObjectCommand = new PutObjectCommand({
             Key: fileName,
-            Body: zipData,
-            ContentType: 'application/zip',
-            StorageClass: 'STANDARD',
+            Body: stream,
             Bucket: this.bucket
         });
 
         try {
-            await this.s3.send(putObjectCommand, {});
+            await this.s3.send(putObjectCommand);
             console.log(`Archive [${fileName}.zip] uploaded to S3`);
         } catch (err) {
             console.log('Upload to S3 failed: ', err);
             throw err;
+        } finally {
+            stream.close();
         }
     }
 }

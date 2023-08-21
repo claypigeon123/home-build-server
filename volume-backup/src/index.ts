@@ -25,8 +25,7 @@ const run = async () => {
         const archivePath = resolve(dir, `${basename(volumePath)}.zip`);
 
         await archivalService.createArchive({ filePath: archivePath, folderName: volumePath });
-        const data = await archivalService.readArchive({ filePath: archivePath });
-        await archiveStorageService.upload({ fileName: `${now}/${basename(archivePath)}`, zipData: data });
+        await archiveStorageService.upload({ fileName: `${now}/${basename(archivePath)}`, filePath: archivePath });
         await archivalService.cleanupArchive({ filePath: archivePath });
     }
 }
