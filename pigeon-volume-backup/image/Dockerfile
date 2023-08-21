@@ -18,9 +18,9 @@ RUN unzip awscliv2.zip
 RUN ./aws/install
 RUN rm -rf awscliv2.zip
 
-RUN mkdir -p /var/run/root/backup.sh
-COPY backup.sh /var/run/root/backup.sh
-RUN chmod +x /var/run/root/backup.sh
+RUN mkdir -p /src/backup.sh
+COPY backup.sh /src/backup.sh
+RUN chmod a+x /src/backup.sh
 
-WORKDIR /var/run/root
-CMD [ "/var/run/root/backup.sh" ]
+WORKDIR /src
+CMD [ "/src/backup.sh" ]
