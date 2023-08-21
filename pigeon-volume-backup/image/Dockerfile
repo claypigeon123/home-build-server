@@ -23,4 +23,4 @@ COPY backup.sh /root/backup.sh
 RUN chmod a+x /root/backup.sh
 
 WORKDIR /root
-CMD [ "/root/backup.sh" ]
+ENTRYPOINT [ "/root/backup.sh" ]
