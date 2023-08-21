@@ -2,7 +2,7 @@ FROM debian:bookworm
 
 # Setup
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends curl ca-certificates openssh-client iputils-ping unzip bash gpg dpkg
+RUN apt-get install -y --no-install-recommends curl ca-certificates openssh-client iputils-ping unzip gpg dpkg
 
 # Docker - not needed for now
 # RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && chmod a+r /etc/apt/keyrings/docker.gpg
@@ -18,9 +18,9 @@ RUN unzip awscliv2.zip
 RUN ./aws/install
 RUN rm -rf awscliv2.zip
 
-RUN mkdir -p /root/backup.sh
-COPY backup.sh /root/backup.sh
-RUN chmod a+x /root/backup.sh
+RUN mkdir -p /root
+COPY entrypoint.sh /root/entrypoint.sh
+RUN chmod +x /root/entrypoint.sh
 
 WORKDIR /root
-ENTRYPOINT [ "/root/backup.sh" ]
+ENTRYPOINT [ "/root/entrypoint.sh" ]
