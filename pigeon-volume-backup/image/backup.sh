@@ -4,7 +4,7 @@
 
 info "Backup starting"
 TIME_START="$(date +%s.%N)"
-DOCKER_SOCK="/var/run/docker.sock"
+# DOCKER_SOCK="/var/run/docker.sock"
 
 info "Creating backup"
 BACKUP_FILENAME="$(date +"${BACKUP_FILENAME:-backup-%Y-%m-%dT%H-%M-%S.tar.gz}")"
