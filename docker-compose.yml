@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:  
+  pigeon-openldap-server:
+    container_name: pigeon-openldap-server
+    image: osixia/openldap:1.5.0
+    restart: always
+    networks:
+      - build-network
+    environment:
+      LDAP_ORGANISATION: CP Systems
+      LDAP_DOMAIN: cp-sys.hu
+      LDAP_ADMIN_PASSWORD: "???"
+    volumes:
+      - openldap_db:/var/lib/ldap
+      - openldap_cfg:/etc/ldap/slapd.d
+
+  pigeon-openldap-admin:
+    container_name: pigeon-openldap-admin
+    image: osixia/phpldapadmin:0.9.0
+    restart: unless-stopped
+    networks:
+      - build-network
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: pigeon-openldap-server
+    ports:
+      - "6443:443"
+
+  pigeon-portainer:
+    container_name: pigeon-portainer
+    image: portainer/portainer-ce:2.18.4
+    restart: always
+    networks:
+      - build-network
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "2000:8000"
+      - "2001:9000"
+
+  pigeon-jenkins-controller:
+    container_name: pigeon-jenkins-controller
+    image: pigeon-jenkins-controller:2.414.1-lts-jdk17
+    build: ./pigeon-jenkins
+    restart: always
+    networks:
+      - build-network
+    environment:
+      JENKINS_OPTS: --prefix=/jenkins
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "2999:8080"
+      - "50000:50000"
+
+  pigeon-nexus:
+    container_name: pigeon-nexus
+    image: sonatype/nexus3:3.59.0
+    restart: always
+    networks:
+      - build-network
+    environment:
+      NEXUS_CONTEXT: nexus/
+    volumes:
+      - nexus_data:/nexus-data
+    ports:
+      - "2002:8081"
+      - "1900:1900"
+      - "1901:1901"
+      - "1902:1902"
+
+  pigeon-nginx:
+    container_name: pigeon-nginx
+    image: pigeon-nginx:1.25.2
+    build: ./pigeon-nginx
+    restart: always
+    networks:
+      - build-network
+    volumes:
+      - /letsencryptdata/etc/letsencrypt:/etc/letsencrypt
+      - /letsencryptdata/www:/var/www/certbot
+    ports:
+      - "80:80"
+      - "443:443"
+
+volumes:
+  openldap_cfg:
+  openldap_db:
+  portainer_data:
+  jenkins_home:
+  nexus_data:
+
+networks:
+  build-network:
+    name: build-network
+    driver: bridge
