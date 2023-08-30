@@ -103,9 +103,9 @@ services:
     restart: always
     command: -Dsonar.web.context=/sonar
     networks:
-      - build-networks
+      - build-network
     environment:
-      SONAR_JDBC_URL: jdbc:postgresql://pigeon-postgres:5432/sonar
+      SONAR_JDBC_URL: jdbc:postgresql://pigeon-postgres:5432/postgres
       SONAR_JDBC_USERNAME: postgres
       SONAR_JDBC_PASSWORD: k9V_tVv2f2B.aZgprTeAdU@fgP
     volumes:
