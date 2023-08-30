@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 
 services:
   backup:
@@ -14,6 +14,12 @@ services:
       - portainer_data:/backup/portainer_data:ro
       - nexus_data:/backup/nexus_data:ro
       - jenkins_home:/backup/jenkins_home:ro
+      - postgres_home:/backup/postgres_home:ro
+      - postgres_data:/backup/postgres_data:ro
+      - sonarqube_data:/backup/sonarqube_data:ro
+      - sonarqube_extensions:/backup/sonarqube_extensions:ro
+      - sonarqube_logs:/backup/sonarqube_logs:ro
+      - sonarqube_conf:/backup/sonarqube_conf:ro
 
 volumes:
   openldap_cfg:
@@ -30,4 +36,22 @@ volumes:
     external: true
   jenkins_home:
     name: jenkins_home
+    external: true
+  postgres_home:
+    name: postgres_home
+    external: true
+  postgres_data:
+    name: postgres_data
+    external: true
+  sonarqube_data:
+    name: sonarqube_data
+    external: true
+  sonarqube_extensions:
+    name: sonarqube_extensions
+    external: true
+  sonarqube_logs:
+    name: sonarqube_logs
+    external: true
+  sonarqube_conf:
+    name: sonarqube_conf
     external: true
