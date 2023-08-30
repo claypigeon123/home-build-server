@@ -87,10 +87,15 @@ services:
 
 volumes:
   openldap_cfg:
+    name: openldap_cfg
   openldap_db:
+    name: openldap_db
   portainer_data:
+    name: portainer_data
   jenkins_home:
+    name: jenkins_home
   nexus_data:
+    name: nexus_data
 
 networks:
   build-network:
