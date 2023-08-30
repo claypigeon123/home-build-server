@@ -85,6 +85,37 @@ services:
       - "80:80"
       - "443:443"
 
+  pigeon-postgres:
+    container_name: pigeon-postgres
+    image: postgres:15.4
+    restart: always
+    networks:
+      - build-network
+    environment:
+      POSTGRES_PASSWORD: k9V_tVv2f2B.aZgprTeAdU@fgP
+    volumes:
+      - postgres_home:/var/lib/postgresql
+      - postgres_data:/var/lib/postgresql/data
+
+  pigeon-sonarqube:
+    container_name: pigeon-sonarqube
+    image: sonarqube:10.1.0-community
+    restart: always
+    command: -Dsonar.web.context=/sonar
+    networks:
+      - build-networks
+    environment:
+      SONAR_JDBC_URL: jdbc:postgresql://pigeon-postgres:5432/sonar
+      SONAR_JDBC_USERNAME: postgres
+      SONAR_JDBC_PASSWORD: k9V_tVv2f2B.aZgprTeAdU@fgP
+    volumes:
+      - sonarqube_data:/opt/sonarqube/data
+      - sonarqube_extensions:/opt/sonarqube/extensions
+      - sonarqube_logs:/opt/sonarqube/logs
+      - sonarqube_conf:/opt/sonarqube/conf
+    ports:
+      - "2010:9000"
+
 volumes:
   openldap_cfg:
     name: openldap_cfg
@@ -96,6 +127,18 @@ volumes:
     name: jenkins_home
   nexus_data:
     name: nexus_data
+  postgres_home:
+    name: postgres_home
+  postgres_data:
+    name: postgres_data
+  sonarqube_data:
+    name: sonarqube_data
+  sonarqube_extensions:
+    name: sonarqube_extensions
+  sonarqube_logs:
+    name: sonarqube_logs
+  sonarqube_conf:
+    name: sonarqube_conf
 
 networks:
   build-network:
