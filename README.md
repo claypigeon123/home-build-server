@@ -2,7 +2,7 @@
 
 Four apps in Docker containers to run a fully functional build server:
 - Nginx 1.25.2
-- Portainer 2.18.4
+- Portainer 2.19.0
 - Nexus 3.59.0
 - Jenkins 2.414.1
 - Open LDAP
