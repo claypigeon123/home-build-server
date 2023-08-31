@@ -22,7 +22,7 @@ docker run -d --name pigeon-openldap-admin -p 6443:443 -e PHPLDAPADMIN_LDAP_HOST
 ### Portainer
 
 ```bash
-docker run -d --name pigeon-portainer --restart always -p 2000:8000 -p 2001:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.18.4
+docker run -d --name pigeon-portainer --restart always -p 2000:8000 -p 2001:9000 -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:2.19.0
 ```
 
 ### Nexus
