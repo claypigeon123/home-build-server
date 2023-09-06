@@ -1,3 +1,10 @@
+
+# -----------------------------
+# REQUIRED ENV VARS:
+#   - LDAP_ADMIN_PASSWORD
+#   - POSTGRES_PASSWORD
+# -----------------------------
+
 version: '3.8'
 
 services:  
@@ -10,7 +17,7 @@ services:
     environment:
       LDAP_ORGANISATION: CP Systems
       LDAP_DOMAIN: cp-sys.hu
-      LDAP_ADMIN_PASSWORD: "???"
+      LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD}
     volumes:
       - openldap_db:/var/lib/ldap
       - openldap_cfg:/etc/ldap/slapd.d
@@ -92,10 +99,12 @@ services:
     networks:
       - build-network
     environment:
-      POSTGRES_PASSWORD: k9V_tVv2f2B.aZgprTeAdU@fgP
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_home:/var/lib/postgresql
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
   pigeon-sonarqube:
     container_name: pigeon-sonarqube
@@ -105,9 +114,9 @@ services:
     networks:
       - build-network
     environment:
-      SONAR_JDBC_URL: jdbc:postgresql://pigeon-postgres:5432/postgres
+      SONAR_JDBC_URL: jdbc:postgresql://pigeon-postgres:5432/sonar
       SONAR_JDBC_USERNAME: postgres
-      SONAR_JDBC_PASSWORD: k9V_tVv2f2B.aZgprTeAdU@fgP
+      SONAR_JDBC_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - sonarqube_data:/opt/sonarqube/data
       - sonarqube_extensions:/opt/sonarqube/extensions
