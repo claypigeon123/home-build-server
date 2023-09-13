@@ -3,7 +3,7 @@
 Four apps in Docker containers to run a fully functional build server:
 - Nginx 1.25.2
 - Portainer 2.19.0
-- Nexus 3.59.0
+- Nexus 3.60.0
 - Jenkins 2.414.1
 - Open LDAP
 - PostgreSQL 15.4
@@ -31,7 +31,7 @@ docker run -d --name pigeon-portainer --restart always -p 2000:8000 -p 2001:9000
 Sonatype does not provide arm64 images, but it can easily be [built from source](https://github.com/sonatype/docker-nexus3).
 
 ```bash
-docker run -d --name pigeon-nexus --restart always -p 2002:8081 -p 1900:1900 -p 1901:1901 -p 1902:1902 -e NEXUS_CONTEXT=nexus/ -v nexus_data:/nexus-data sonatype/nexus3:3.59.0
+docker run -d --name pigeon-nexus --restart always -p 2002:8081 -p 1900:1900 -p 1901:1901 -p 1902:1902 -e NEXUS_CONTEXT=nexus/ -v nexus_data:/nexus-data sonatype/nexus3:3.60.0
 ```
 
 ### Jenkins
