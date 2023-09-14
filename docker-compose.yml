@@ -108,7 +108,7 @@ services:
 
   pigeon-sonarqube:
     container_name: pigeon-sonarqube
-    image: sonarqube:10.1.0-community
+    image: sonarqube:10.2.0-community
     restart: always
     command: -Dsonar.web.context=/sonar
     networks:

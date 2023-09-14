@@ -7,7 +7,7 @@ Four apps in Docker containers to run a fully functional build server:
 - Jenkins 2.414.1
 - Open LDAP
 - PostgreSQL 15.4
-- SonarQube 10.1.0
+- SonarQube 10.2.0
 
 ## Components
 
