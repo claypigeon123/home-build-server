@@ -80,7 +80,7 @@ services:
 
   pigeon-nginx:
     container_name: pigeon-nginx
-    image: pigeon-nginx:1.25.2
+    image: pigeon-nginx:1.25.4
     build: ./pigeon-nginx
     restart: always
     networks:
