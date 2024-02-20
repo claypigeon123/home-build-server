@@ -35,7 +35,7 @@ services:
 
   pigeon-portainer:
     container_name: pigeon-portainer
-    image: portainer/portainer-ce:2.19.0
+    image: portainer/portainer-ce:2.19.4
     restart: always
     networks:
       - build-network
@@ -64,7 +64,7 @@ services:
 
   pigeon-nexus:
     container_name: pigeon-nexus
-    image: sonatype/nexus3:3.60.0
+    image: sonatype/nexus3:3.65.0
     restart: always
     networks:
       - build-network
