@@ -94,7 +94,7 @@ services:
 
   pigeon-postgres:
     container_name: pigeon-postgres
-    image: postgres:15.4
+    image: postgres:16.2
     restart: always
     networks:
       - build-network
@@ -108,7 +108,7 @@ services:
 
   pigeon-sonarqube:
     container_name: pigeon-sonarqube
-    image: sonarqube:10.2.0-community
+    image: sonarqube:10.4.0-community
     restart: always
     command: -Dsonar.web.context=/sonar
     networks:
