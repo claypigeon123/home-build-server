@@ -48,7 +48,7 @@ services:
 
   pigeon-jenkins-controller:
     container_name: pigeon-jenkins-controller
-    image: pigeon-jenkins-controller:2.426.3-lts-jdk21
+    image: pigeon-jenkins-controller:2.440.1-lts-jdk21
     build: ./pigeon-jenkins
     restart: always
     networks:
