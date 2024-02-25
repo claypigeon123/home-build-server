@@ -25,7 +25,10 @@ RUN echo \
     "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 RUN apt-get update && apt-get install -y docker-ce-cli
 
-RUN groupadd docker
+ARG DOCKER_GID=999
+ENV DOCKER_GID ${DOCKER_GID}
+
+RUN groupadd --gid ${DOCKER_GID} docker
 RUN usermod -aG docker jenkins
 
 # Kubectl
