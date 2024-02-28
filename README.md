@@ -1,13 +1,13 @@
 # Pigeon Build Server
 
 Four apps in Docker containers to run a fully functional build server:
-- Nginx 1.25.2
-- Portainer 2.19.0
-- Nexus 3.60.0
-- Jenkins 2.414.1
+- Nginx 1.25.4
+- Portainer 2.19.4
+- Nexus 3.65.0
+- Jenkins 2.440.1 LTS JDK21
 - Open LDAP
-- PostgreSQL 15.4
-- SonarQube 10.2.0
+- PostgreSQL 15.6
+- SonarQube 10.4.1
 
 ## Components
 
