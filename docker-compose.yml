@@ -64,7 +64,7 @@ services:
 
   pigeon-nexus:
     container_name: pigeon-nexus
-    image: sonatype/nexus3:3.65.0
+    image: sonatype/nexus3:3.66.0
     restart: always
     networks:
       - build-network
