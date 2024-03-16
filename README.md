@@ -10,7 +10,7 @@ Docker compose provided.
 - Portainer 2.19.4
 - Nexus 3.66.0
 - Jenkins 2.440.1 LTS JDK21
-- Open LDAP
+- Bitnami Open LDAP 2.5.17 (+ dnknth/ldap-ui)
 - PostgreSQL 15.6
 - SonarQube 10.4.1
 

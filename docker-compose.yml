@@ -10,28 +10,31 @@ version: '3.8'
 services:  
   pigeon-openldap-server:
     container_name: pigeon-openldap-server
-    image: osixia/openldap:1.5.0
+    image: bitnami/openldap:2.5.17
     restart: always
     networks:
       - build-network
     environment:
-      LDAP_ORGANISATION: CP Systems
-      LDAP_DOMAIN: cp-sys.hu
+      LDAP_PORT_NUMBER: 389
+      LDAP_ROOT: dc=cp-sys,dc=hu
+      LDAP_ADMIN_USERNAME: admin
+      LDAP_ADMIN_DN: cn=admin,dc=cp-sys,dc=hu
       LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD}
     volumes:
-      - openldap_db:/var/lib/ldap
-      - openldap_cfg:/etc/ldap/slapd.d
+      - openldap_data:/bitnami/openldap
 
   pigeon-openldap-admin:
     container_name: pigeon-openldap-admin
-    image: osixia/phpldapadmin:0.9.0
+    image: dnknth/ldap-ui
     restart: unless-stopped
     networks:
       - build-network
     environment:
-      PHPLDAPADMIN_LDAP_HOSTS: pigeon-openldap-server
+      LDAP_URL: ldap://pigeon-openldap-server:389
+      BASE_DN: dc=cp-sys,dc=hu
+      BIND_PATTERN: "%s"
     ports:
-      - "6443:443"
+      - "6443:5000"
 
   pigeon-portainer:
     container_name: pigeon-portainer
@@ -126,10 +129,8 @@ services:
       - "2010:9000"
 
 volumes:
-  openldap_cfg:
-    name: openldap_cfg
-  openldap_db:
-    name: openldap_db
+  openldap_data:
+    name: openldap_data
   portainer_data:
     name: portainer_data
   jenkins_home:
