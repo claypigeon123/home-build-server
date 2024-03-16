@@ -20,6 +20,7 @@ services:
       LDAP_ADMIN_USERNAME: admin
       LDAP_ADMIN_DN: cn=admin,dc=cp-sys,dc=hu
       LDAP_ADMIN_PASSWORD: ${LDAP_ADMIN_PASSWORD}
+      LDAP_SKIP_DEFAULT_TREE: yes
     volumes:
       - openldap_data:/bitnami/openldap
 
