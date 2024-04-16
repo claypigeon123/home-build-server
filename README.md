@@ -6,7 +6,7 @@ Docker compose provided.
 
 ## Components
 
-- Nginx 1.25.5
+- Nginx 1.25.4
 - Portainer 2.20.1
 - Nexus 3.67.1
 - Jenkins 2.440.2 LTS JDK21
