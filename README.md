@@ -6,9 +6,9 @@ Docker compose provided.
 
 ## Components
 
-- Nginx 1.25.4
+- Nginx 1.25.5
 - Portainer 2.20.1
-- Nexus 3.67.0
+- Nexus 3.67.1
 - Jenkins 2.440.2 LTS JDK21
 - Bitnami Open LDAP 2.5.17 (+ dnknth/ldap-ui)
 - PostgreSQL 15.6

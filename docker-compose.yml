@@ -27,6 +27,7 @@ services:
   pigeon-openldap-admin:
     container_name: pigeon-openldap-admin
     image: dnknth/ldap-ui
+    pull_policy: always
     restart: unless-stopped
     networks:
       - build-network
@@ -68,7 +69,7 @@ services:
 
   pigeon-nexus:
     container_name: pigeon-nexus
-    image: sonatype/nexus3:3.67.0
+    image: sonatype/nexus3:3.67.1
     restart: always
     networks:
       - build-network
@@ -84,7 +85,7 @@ services:
 
   pigeon-nginx:
     container_name: pigeon-nginx
-    image: pigeon-nginx:1.25.4
+    image: pigeon-nginx:1.25.5
     build: ./pigeon-nginx
     restart: always
     networks:
