@@ -27,8 +27,8 @@ services:
   pigeon-openldap-admin:
     container_name: pigeon-openldap-admin
     image: dnknth/ldap-ui
-    restart: unless-stopped
     pull_policy: always
+    restart: unless-stopped
     networks:
       - build-network
     environment:
@@ -40,7 +40,7 @@ services:
 
   pigeon-portainer:
     container_name: pigeon-portainer
-    image: portainer/portainer-ce:2.19.4
+    image: portainer/portainer-ce:2.20.1
     restart: always
     networks:
       - build-network
@@ -69,7 +69,7 @@ services:
 
   pigeon-nexus:
     container_name: pigeon-nexus
-    image: sonatype/nexus3:3.66.0
+    image: sonatype/nexus3:3.67.1
     restart: always
     networks:
       - build-network
