@@ -28,6 +28,7 @@ services:
     container_name: pigeon-openldap-admin
     image: dnknth/ldap-ui
     restart: unless-stopped
+    pull_policy: always
     networks:
       - build-network
     environment:
@@ -52,7 +53,7 @@ services:
 
   pigeon-jenkins-controller:
     container_name: pigeon-jenkins-controller
-    image: pigeon-jenkins-controller:2.440.1-lts-jdk21
+    image: pigeon-jenkins-controller:2.440.3-lts-jdk21
     build: ./pigeon-jenkins
     restart: always
     networks:
@@ -84,7 +85,7 @@ services:
 
   pigeon-nginx:
     container_name: pigeon-nginx
-    image: pigeon-nginx:1.25.4
+    image: pigeon-nginx:1.25.5
     build: ./pigeon-nginx
     restart: always
     networks:
@@ -112,7 +113,7 @@ services:
 
   pigeon-sonarqube:
     container_name: pigeon-sonarqube
-    image: sonarqube:10.4.1-community
+    image: sonarqube:10.5.0-community
     restart: always
     command: -Dsonar.web.context=/sonar
     networks:
