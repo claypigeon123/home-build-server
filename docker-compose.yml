@@ -5,8 +5,6 @@
 #   - POSTGRES_PASSWORD
 # -----------------------------
 
-version: '3.8'
-
 services:  
   pigeon-openldap-server:
     container_name: pigeon-openldap-server
