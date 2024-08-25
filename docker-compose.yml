@@ -127,6 +127,21 @@ services:
       - sonarqube_conf:/opt/sonarqube/conf
     ports:
       - "2010:9000"
+  
+  pigeon-ums:
+    container_name: pigeon-ums
+    image: universalmediaserver/ums
+    pull_policy: always
+    restart: unless-stopped
+    networks:
+      - build-network
+    volumes:
+      - ums_data:/root/.config/UMS
+      - $HOME/ums-shared-media:/root/media
+    ports:
+      - "2011:1044"
+      - "2012:5001"
+      - "2013:9001"
 
 volumes:
   openldap_data:
@@ -149,6 +164,8 @@ volumes:
     name: sonarqube_logs
   sonarqube_conf:
     name: sonarqube_conf
+  ums_data:
+    name: ums_data
 
 networks:
   build-network:
