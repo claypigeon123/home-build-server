@@ -1,4 +1,4 @@
-FROM nginx:1.26.1
+FROM nginx:1.26.2
 
 
 RUN curl -o /certbot-nginx/ssl-dhparams.pem --create-dirs https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem
