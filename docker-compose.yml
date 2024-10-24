@@ -38,7 +38,7 @@ services:
 
   pigeon-portainer:
     container_name: pigeon-portainer
-    image: portainer/portainer-ce:2.20.3
+    image: portainer/portainer-ce:2.21.3
     restart: always
     networks:
       - build-network
@@ -51,7 +51,7 @@ services:
 
   pigeon-jenkins-controller:
     container_name: pigeon-jenkins-controller
-    image: pigeon-jenkins-controller:2.462.1-lts-jdk21
+    image: pigeon-jenkins-controller:2.462.3-lts-jdk21
     build: ./pigeon-jenkins
     restart: always
     networks:
@@ -67,7 +67,7 @@ services:
 
   pigeon-nexus:
     container_name: pigeon-nexus
-    image: sonatype/nexus3:3.70.1
+    image: sonatype/nexus3:3.73.0
     restart: always
     networks:
       - build-network
@@ -83,7 +83,7 @@ services:
 
   pigeon-nginx:
     container_name: pigeon-nginx
-    image: pigeon-nginx:1.26.1
+    image: pigeon-nginx:1.26.2
     build: ./pigeon-nginx
     restart: always
     networks:
@@ -97,7 +97,7 @@ services:
 
   pigeon-postgres:
     container_name: pigeon-postgres
-    image: postgres:15.7
+    image: postgres:15.8
     restart: always
     networks:
       - build-network
@@ -111,7 +111,7 @@ services:
 
   pigeon-sonarqube:
     container_name: pigeon-sonarqube
-    image: sonarqube:10.6.0-community
+    image: sonarqube:10.7.0-community
     restart: always
     command: -Dsonar.web.context=/sonar
     networks:
@@ -127,21 +127,6 @@ services:
       - sonarqube_conf:/opt/sonarqube/conf
     ports:
       - "2010:9000"
-  
-  pigeon-ums:
-    container_name: pigeon-ums
-    image: universalmediaserver/ums
-    pull_policy: always
-    restart: unless-stopped
-    networks:
-      - build-network
-    volumes:
-      - ums_data:/root/.config/UMS
-      - $HOME/ums-shared-media:/root/media
-    ports:
-      - "2011:1044"
-      - "2012:5001"
-      - "2013:9001"
 
 volumes:
   openldap_data:
@@ -164,8 +149,6 @@ volumes:
     name: sonarqube_logs
   sonarqube_conf:
     name: sonarqube_conf
-  ums_data:
-    name: ums_data
 
 networks:
   build-network:

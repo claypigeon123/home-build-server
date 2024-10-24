@@ -6,13 +6,13 @@ Docker compose provided.
 
 ## Components
 
-- Nginx 1.26.1
-- Portainer 2.20.3
-- Nexus 3.70.1
-- Jenkins 2.462.1 LTS JDK21
+- Nginx 1.26.2
+- Portainer 2.21.3
+- Nexus 3.73.0
+- Jenkins 2.462.3 LTS JDK21
 - Bitnami Open LDAP 2.5.18 (+ dnknth/ldap-ui)
-- PostgreSQL 15.7
-- SonarQube 10.6.0
+- PostgreSQL 15.8
+- SonarQube 10.7.0
 
 ## Nginx Proxy Fuckery
 
